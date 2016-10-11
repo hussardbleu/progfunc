@@ -34,6 +34,12 @@ def msort[T](xs: List[T])(implicit ord: Ordering[T]): List[T] = {
 
 }
 
+msort(List(6,2,5,10,1,7))
+msort(List(6,2,5,10,1,7))(Ordering.Int)
+msort(List("chienne","salope","clebard","ravelure"))
+
+
+
 // http://stackoverflow.com/questions/9848366/how-to-write-a-generic-mergesort-in-scala
 def mergeSort[T](less: (T, T) => Boolean)(xs: List[T]): List[T] = {
   val n = xs.length/2
