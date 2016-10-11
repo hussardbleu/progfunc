@@ -1,3 +1,5 @@
+import math.Ordering
+
 def removeAt[T](xs: List[T], n: Int): List[T] = xs match {
   case List() => xs
   case head::tail => if(n==0) tail else head::removeAt(tail, n-1)
@@ -14,28 +16,25 @@ def flatten(xs: List[Any]): List[Any] = xs match {
 
 flatten(List(List(1, 1), 2, List(3, List(5, 8))))
 
-def msort(xs: List[Int]): List[Int] = {
+def msort[T](xs: List[T])(ord: Ordering[T]): List[T] = {
   val n = xs.length/2
   if(n==0) xs
   else {
-    def merge(xs: List[Int], ys: List[Int]): List[Int] = xs match {
-      case Nil =>
-        ys
-      case x::xtail => ys match {
-        case Nil =>
-          xs
-        case y::ytail =>
-          if (x < y) x :: merge(xtail, ys)
-          else y :: merge(xs,ytail)
-      }
+    def merge(xs: List[T], ys: List[T]): List[T] = (xs, ys) match {
+      case (Nil, _) => ys
+      case (_, Nil) => xs
+      case (x :: xtail, y :: ytail) =>
+        if (ord.lt(x, y)) x :: merge(xtail, ys)
+        else y :: merge(xs, ytail)
     }
+
     val (left, right) = xs splitAt n
-    merge(msort(left), msort(right))
+    merge(msort(left)(ord), msort(right)(ord))
   }
 
 }
 
-
+// http://stackoverflow.com/questions/9848366/how-to-write-a-generic-mergesort-in-scala
 def mergeSort[T](less: (T, T) => Boolean)(xs: List[T]): List[T] = {
   val n = xs.length/2
   if(n==0) xs
