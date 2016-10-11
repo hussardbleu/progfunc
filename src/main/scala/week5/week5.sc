@@ -16,7 +16,7 @@ def flatten(xs: List[Any]): List[Any] = xs match {
 
 flatten(List(List(1, 1), 2, List(3, List(5, 8))))
 
-def msort[T](xs: List[T])(ord: Ordering[T]): List[T] = {
+def msort[T](xs: List[T])(implicit ord: Ordering[T]): List[T] = {
   val n = xs.length/2
   if(n==0) xs
   else {
