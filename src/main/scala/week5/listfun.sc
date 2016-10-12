@@ -38,7 +38,7 @@ concat(List(1,2,3),List(4,5,6))
 def mapFun[T, U](xs: List[T], f: T => U): List[U] =
   (xs foldRight List[U]())( f(_) :: _ )
 
-mapFun(List(1,2,3), (x: Int) => (x+1))
+mapFun(List(1,2,3), (x: Int) => x+1)
 
 def lengthFun[T](xs: List[T]): Int =
   (xs foldRight 0)( (x, y) => 1 + y )
