@@ -17,3 +17,14 @@ def pack[T](xs: List[T]): List[List[T]] = xs match {
 }
 
 pack(List('a', 'a', 'a', 'b', 'b', 'c', 'c', 'a'))
+
+def encode[T](xs: List[T]): List[(T, Int)] = {
+
+  def encodePackedList [T](ys: List[List[T]]): List[(T, Int)] = ys match {
+    case Nil => Nil
+    case (y: List[T]) :: (ys1: List[List[T]])  => (y.head,y.length) :: encodePackedList(ys1)
+  }
+  encodePackedList(pack(xs))
+}
+
+encode(List('a', 'a', 'a', 'b', 'b', 'c', 'c', 'a'))
