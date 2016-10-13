@@ -1,3 +1,5 @@
+object test {
+
 val xs = Array(1, 2, 3, 44)
 xs map (x => x*x)
 
@@ -32,3 +34,4 @@ isPrime(1)
 isPrime(2)
 isPrime(4)
 
+}
