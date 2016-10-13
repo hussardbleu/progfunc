@@ -13,15 +13,15 @@ for {
 } yield (i, j)
 
 def scalarProduct(xs: Vector[Double], ys: Vector[Double]): Double = {
-  (xs zip ys).map{ case (x,y) => x*y}.sum
+  (xs zip ys).map{ case (x, y) => x * y}.sum
 }
 
 def scalarProduct2(xs: Vector[Double], ys: Vector[Double]): Double = {
   (for ((x, y) <- xs zip ys) yield x * y ).sum
 }
 
-val x = Vector(1.0,2.0,3.0)
-val y = Vector(4.0,5.0,6.0)
+val x1 = Vector(1.0,2.0,3.0)
+val y1 = Vector(4.0,5.0,6.0)
 
-scalarProduct(x, y)
-scalarProduct2(x, y)
+scalarProduct(x1, y1)
+scalarProduct2(x1, y1)
