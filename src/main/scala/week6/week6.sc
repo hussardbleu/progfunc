@@ -25,3 +25,10 @@ def scalarProduct(xs: Vector[Double], ys: Vector[Double]): Double = {
   (xs zip ys).map{ case (x,y) => x*y}.sum
 }
 
+def isPrime(n: Int): Boolean = (2 until n).forall(x => n % x !=0)
+
+isPrime(9)
+isPrime(1)
+isPrime(2)
+isPrime(4)
+
