@@ -21,6 +21,7 @@ val t: Range = 1 to 5
 -1 to -10 by -2
 
 def scalarProduct(xs: Vector[Double], ys: Vector[Double]): Double = {
-  (xs zip ys).map(xy => xy._1*xy._2).sum
+  //(xs zip ys).map(xy => xy._1*xy._2).sum
+  (xs zip ys).map{ case (x,y) => x*y}.sum
 }
 
