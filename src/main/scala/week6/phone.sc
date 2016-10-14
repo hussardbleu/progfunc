@@ -9,8 +9,7 @@ val mnem = Map(
   '6' -> "MNO", '7' -> "PQRS", '8' -> "TUV", '9' -> "WXYZ")
 
 /** Invert the mnem map to give a map from chars 'A' ... 'Z' to '2' ... '9'*/
-val charCode: Map[Char, Char] = (for {(num, letters) <- mnem} yield for {char <- letters} yield char -> num).flatten.toMap
-
+val charCode: Map[Char, Char] = for {(num, letters) <- mnem; char<- letters} yield  char -> num
 /** Maps a word to the digit string it can represent, e.g. "Java" -> "5282" */
 def wordCode(word: String): String = for (letter <- word.toUpperCase) yield charCode(letter)
 
