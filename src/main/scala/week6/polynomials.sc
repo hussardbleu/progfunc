@@ -1,4 +1,6 @@
 class Poly(val terms0: Map[Int, Double]) {
+  def this(bindings: (Int, Double)*) = this(bindings.toMap)
+
   val terms = terms0 withDefaultValue 0.0
 
   override def toString = {
@@ -14,7 +16,7 @@ class Poly(val terms0: Map[Int, Double]) {
 }
 
 val p1 = new Poly(Map(1 -> 2.0, 3 -> 4.0, 5 -> 6.2))
-val p2 = new Poly(Map(0 -> 3.0, 3 -> 7.0))
+val p2 = new Poly(0 -> 3.0, 3 -> 7.0)
 
 p1.toString
 
