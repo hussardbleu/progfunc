@@ -37,3 +37,10 @@ encode("7225247386")
 
 encode("23653448537")
 
+def translate(number: String): Set[String] =
+  for {list <- encode(number)} yield list reduceLeft ((x, y) => x + " " + y)
+
+translate("7225247386")
+translate("23653448537")
+
+
