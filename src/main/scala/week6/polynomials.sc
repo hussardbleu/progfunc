@@ -1,4 +1,6 @@
-class Poly(val terms: Map[Int, Double]) {
+class Poly(val terms0: Map[Int, Double]) {
+  val terms = terms0 withDefaultValue 0.0
+
   override def toString = {
   (for ((exp, coeff) <- terms.toList.sorted.reverse) yield coeff + " * X^" + exp) mkString " + "
   }
@@ -11,6 +13,7 @@ class Poly(val terms: Map[Int, Double]) {
       case None => (exp, coeff)
     }
   }
+
 }
 
 val p1 = new Poly(Map(1 -> 2.0, 3 -> 4.0, 5 -> 6.2))
