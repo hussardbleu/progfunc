@@ -6,10 +6,7 @@ class Poly(val terms: Map[Int, Double]) {
 //
 //  }
   override def toString = {
-  val poly =
-    for (term <- terms)
-      yield term._2.toString + " * X^" + term._1.toString
-  poly mkString " + "
+  (for ((exp, coeff) <- terms.toList.sorted.reverse) yield coeff + " * X^" + exp) mkString " + "
   }
 }
 
