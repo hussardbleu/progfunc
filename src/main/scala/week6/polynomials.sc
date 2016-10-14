@@ -7,11 +7,16 @@ class Poly(val terms0: Map[Int, Double]) {
   (for ((exp, coeff) <- terms.toList.sorted.reverse) yield coeff + " * X^" + exp) mkString " + "
   }
 
-  def + (other: Poly) = new Poly(terms ++ (other.terms map adjust))
-  def adjust(term: (Int, Double)): (Int, Double) = {
+//  def + (other: Poly) = new Poly(terms ++ (other.terms map adjust))
+//  def adjust(term: (Int, Double)): (Int, Double) = {
+//    val (exp, coeff) = term
+//    (exp, coeff + terms(exp))}
+  def + (other: Poly) = new Poly((other.terms foldLeft terms)(addTerm))
+  def addTerm(terms: Map[Int, Double], term: (Int, Double)): Map[Int, Double] = {
     val (exp, coeff) = term
-    (exp, coeff + terms(exp))
+    terms + ((exp , coeff + terms(exp)))
   }
+
 
 }
 
