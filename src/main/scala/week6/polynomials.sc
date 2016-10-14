@@ -8,10 +8,7 @@ class Poly(val terms0: Map[Int, Double]) {
   def + (other: Poly) = new Poly(terms ++ (other.terms map adjust))
   def adjust(term: (Int, Double)): (Int, Double) = {
     val (exp, coeff) = term
-    terms get exp match{
-      case Some(coeff0) => (exp, coeff0 + coeff)
-      case None => (exp, coeff)
-    }
+    (exp, coeff + terms(exp))
   }
 
 }
