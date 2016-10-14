@@ -20,7 +20,7 @@ wordCode("Louis")
   * e.g. "5282" -> List("Java", "Kata", Lava", ...
   * Note: a missing number should map to the empty set, e.g. "1111" -> List()
   */
-val wordsForNum: Map[String, Seq[String]] = words groupBy wordCode withDefaultValue Seq()
+val wordsForNum: Map[String, List[String]] = words groupBy wordCode withDefaultValue List()
 
 /** Return all ways to encode a number as a list of words */
 def encode(number: String): Set[List[String]] =
@@ -34,5 +34,6 @@ def encode(number: String): Set[List[String]] =
   }.toSet
 
 encode("7225247386")
+
 encode("23653448537")
 
